@@ -6,7 +6,7 @@ impl Solution {
                 let mut prev = 0;
                 for i in 1..nums.len() {
                     if nums[prev] != nums[i] {
-                        prev = prev + 1;
+                        prev += 1;
                         nums[prev] = nums[i];
                     }
                 }
