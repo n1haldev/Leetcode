@@ -2,10 +2,10 @@ bool rotateString(char * s, char * goal){
     for(int i=0;i<strlen(s);i++) {
         if (strcmp(s, goal) == 0) 
             return true;
-        for(int j=0;j<strlen(goal)-1;j++) {
-            int temp = s[j];
-            s[j] = s[j+1];
-            s[j+1] = temp;
+        for(int j=1;j<strlen(goal);j++) {
+            int temp = s[j-1];
+            s[j-1] = s[j];
+            s[j] = temp;
         }
     }
     return false;
