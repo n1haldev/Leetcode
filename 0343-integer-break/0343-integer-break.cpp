@@ -1,25 +1,14 @@
 class Solution {
 public:
     int integerBreak(int n) {
-        vector<int> breakup;
-        if(n == 2)
-            return 1;
-        if(n == 3) 
-            return 2;
-        while(n >= 3) {
-            if(n == 4) {
-                break;
-            }
-            n -= 3;
-            breakup.push_back(3);
-        }
-        if(n != 0)
-            breakup.push_back(n);
-        
-        int product = 1;
-        for(auto i: breakup) {
-            product *= i;
-        }
-        return product;
+        if(n <= 3)
+            return n-1;
+        int q = n / 3;
+        int r = n % 3;
+        if(r == 1)
+            return pow(3, q-1) * 4;
+        if(r == 2)
+            return pow(3, q) * 2;
+        return pow(3, q);
     }
 };
