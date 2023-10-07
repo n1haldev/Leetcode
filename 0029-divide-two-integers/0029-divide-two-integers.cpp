@@ -2,22 +2,11 @@ class Solution {
 public:
     int divide(int dividend, int divisor) {
         int flag = 0;
-        
-        if(dividend == -2147483648) {
-            if(divisor == 1)
-                return -2147483648;
-            else if(divisor == -1)
-                return 2147483647;                
-        }
-        else if(dividend == 2147483647) {
-            if(divisor == 1)
-                return 2147483647;
-            else if(divisor == -1)
-                return -2147483647;
-        }
-        
         long int divid = dividend;
         long int divis = divisor;
+        
+        if(dividend == INT_MIN && divisor == -1)
+            return INT_MAX;
         
         if(dividend < 0 && divisor < 0) {
             flag = 0;
@@ -34,7 +23,6 @@ public:
         }
         
         long int ans = 0;
-        long int temp;
         long dvd = divid;
         long dvs = divis;
         while (dvd >= dvs) {
