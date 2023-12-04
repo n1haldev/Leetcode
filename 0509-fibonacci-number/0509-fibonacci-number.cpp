@@ -1,9 +1,15 @@
 class Solution {
 public:
-    int fib(int n) {
+    int recurseFib(int n, vector<int> &dp) {
         if(n <= 1) {
             return n;
         }
-        return fib(n-1) + fib(n-2);
+        if(dp[n] != -1) 
+            return dp[n];
+        return dp[n] = recurseFib(n-1, dp) + recurseFib(n-2, dp);
+    }
+    int fib(int n) {
+        vector<int> dp(n+1, -1);
+        return recurseFib(n, dp);
     }
 };
