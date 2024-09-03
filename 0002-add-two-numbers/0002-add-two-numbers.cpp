@@ -17,7 +17,7 @@ public:
         int s = 0;
         
         while(l1 || l2) {
-            s = ((l1 != nullptr) ? l1->val : 0) + ((l2 != nullptr) ? l2->val : 0) + carry;
+            s = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
             carry = s / 10;
             struct ListNode* temp = new ListNode(s % 10);
             node->next = temp;
