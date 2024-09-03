@@ -10,27 +10,31 @@
  */
 class Solution {
 public:
+    struct ListNode* add(ListNode* node1, ListNode* node2, int carry) {
+            if(node1==NULL && node2==NULL && carry==0)
+            return NULL;
+
+            int val1,val2,sum = 0;
+            if(node1==NULL) 
+            val1 = 0;
+            else
+            val1 = node1->val;
+
+            if(node2==NULL)
+            val2 = 0;
+            else
+            val2 = node2->val;
+
+            sum = (val1 + val2 + carry)%10;
+            carry = (val1 + val2 + carry)/10;
+            
+            struct ListNode* temp = new ListNode(sum);
+            temp->next = add((node1!=NULL)?node1->next:node1,(node2!=NULL)?node2->next:node2,carry);
+            return temp;
+        }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         int carry = 0;
-        struct ListNode* pseudo = (struct ListNode*)malloc(sizeof(struct ListNode));
-        struct ListNode* node = pseudo;
-        int s = 0;
         
-        while(l1 || l2) {
-            s = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
-            carry = s / 10;
-            struct ListNode* temp = new ListNode(s % 10);
-            node->next = temp;
-            node = node->next;
-            l1 = (l1) ? l1->next : nullptr;
-            l2 = (l2) ? l2->next : nullptr;
-        }
-        
-        if(carry == 1) {
-            struct ListNode* temp = new ListNode(1);
-            node->next = temp;
-        }
-        
-        return pseudo->next;
+        return add(l1,l2,carry);
     }
 };
