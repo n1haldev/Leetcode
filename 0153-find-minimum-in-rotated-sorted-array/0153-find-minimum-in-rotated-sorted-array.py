@@ -12,4 +12,4 @@ class Solution:
                 mini = min([mini, nums[mid]])
                 r = mid - 1
                 
-        return min([mini, nums[l]])
+        return mini
