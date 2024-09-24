@@ -3,7 +3,6 @@ public:
     int longestCommonPrefix(vector<int>& arr1, vector<int>& arr2) {
         set<string> s;
         int ans = 0;
-        string a;
         
         for(int i = 0;i < arr1.size(); i++) {
             string temp = to_string(arr1[i]);
@@ -20,12 +19,10 @@ public:
                 if(s.find(temp.substr(0, j)) != s.end()) {
                     if(j > ans) {
                         ans = j;
-                        a = temp.substr(0, j);
                     }
                 }
             }
         }
-        cout << a << endl;
         
         return ans;
     }
